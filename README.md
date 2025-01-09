@@ -1,7 +1,5 @@
 # LLMs-for-Time-Series-Forecasting
 
-# LLMs for Time Series Forecasting
-
 This repository explores the application of Large Language Models (LLMs) for time series forecasting, comparing their performance against traditional forecasting methods using stock market data.
 
 ## Project Overview
