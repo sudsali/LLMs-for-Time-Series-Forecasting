@@ -25,14 +25,16 @@ This research investigates how LLMs can be adapted for time series forecasting, 
 **XGBoost**
 - Best Configuration:
 ```python
-params = {
-    'max_depth': 7,
-    'learning_rate': 0.037,
-    'subsample': 0.941,
-    'colsample_bytree': 0.805,
-    'lambda': 0.730,
-    'alpha': 0.040
-}
+params = {		
+	objective': 'reg:squarederror',		
+	booster': 'gbtree',				
+    max_depth: 1,
+    learning_rate: 0.118,	
+    n_estimators: 1000,
+    min_child_weight: 6,	
+    subsample: 0.92,	
+    colsample_bytree: 0.59
+	}		
 ```
 - Optimization Time: 727.33 seconds
 
