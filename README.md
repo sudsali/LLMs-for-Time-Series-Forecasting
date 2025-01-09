@@ -1,4 +1,4 @@
-# LLMs-for-Time-Series-Forecasting
+# LLMs for Time Series Forecasting
 
 This repository explores the application of Large Language Models (LLMs) for time series forecasting, comparing their performance against traditional forecasting methods using stock market data.
 
@@ -6,15 +6,48 @@ This repository explores the application of Large Language Models (LLMs) for tim
 
 This research investigates how LLMs can be adapted for time series forecasting, particularly in financial markets. The project compares various models including traditional approaches (ARIMA, XGBoost, LSTM) and LLM-based solutions (GPT-2, T5).
 
-## Models and Performance
+## Model Performance
 
-| Model | RMSE Score |
-|-------|------------|
-| ARIMA | 97.682 |
+| Model | RMSE |
+|-------|------|
 | GPT-2 | 51.39 |
+| LSTM | 51.70 |
 | T5 | 53.64 |
-| LSTM | 65.85 |
-| XGBoost | 191.603 |
+| ARIMA | 95.03 |
+| XGBoost | 191.60 |
+
+## Hyperparameter Optimization Results
+
+**ARIMA**
+- Best Configuration: p=2, d=0, q=2, P=1, D=0, Q=0, s=12
+- Optimization Time: 2364.64 seconds
+
+**XGBoost**
+- Best Configuration:
+```python
+params = {
+    'max_depth': 7,
+    'learning_rate': 0.037,
+    'subsample': 0.941,
+    'colsample_bytree': 0.805,
+    'lambda': 0.730,
+    'alpha': 0.040
+}
+```
+- Optimization Time: 727.33 seconds
+
+**LSTM**
+- Best Configuration:
+```python
+params = {
+    'hidden_layer_size': 61,
+    'num_layers': 2,
+    'dropout_rate': 0.178,
+    'learning_rate': 0.0019,
+    'batch_size': 16
+}
+```
+- Optimization Time: 5748.93 seconds
 
 ## Repository Structure
 
@@ -30,22 +63,6 @@ This research investigates how LLMs can be adapted for time series forecasting, 
 ├── README.md
 └── requirements.txt
 ```
-
-## Dataset
-
-The project uses historical stock market data from Yahoo Finance covering the period 2015-2020, with a standardized sequence length of 60 days for all models.
-
-## Implementation Details
-
-**Data Preprocessing**
-- Standardized sequence length of 60 days
-- Numerical data encoded as text for LLM compatibility
-- MinMax scaling for normalized values
-
-**Model Architecture**
-- Traditional Models: ARIMA, XGBoost, LSTM implementations
-- LLM Models: Adapted GPT-2 and T5 for numerical sequence prediction
-- Evaluation using RMSE (Root Mean Square Error)
 
 ## Getting Started
 
@@ -65,9 +82,3 @@ pip install -r requirements.txt
 - xGBoost.ipynb
 - gpt_2_model.ipynb
 - T5_stock.ipynb
-
-## Future Work
-
-- Exploration of longer sequence lengths
-- Integration of textual data with numerical sequences
-- Development of specialized LLM architectures for time series
